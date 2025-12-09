@@ -1,0 +1,255 @@
+/*
+======================================================
+1. CSS RESET & VARIABLES
+======================================================
+*/
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    /* Main Colors */
+    --primary-color: #007BFF; /* A vibrant blue for CTAs and accents */
+    --secondary-color: #6C757D; /* A softer gray for secondary text */
+    --background-color: #F8F9FA; /* Light gray background */
+    --text-color: #343A40; /* Dark text for readability */
+    --white: #FFFFFF;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+    --border-radius: 8px;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3; /* Slightly darker blue on hover */
+}
+
+/*
+======================================================
+2. HEADER (HERO SECTION)
+======================================================
+*/
+
+.hero {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 80px 20px;
+    text-align: center;
+    min-height: 40vh; /* Ensure it takes up a good portion of the viewport */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero h1 {
+    font-size: 2.8em;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    max-width: 600px;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--white);
+    color: var(--primary-color);
+    padding: 12px 30px;
+    border-radius: var(--border-radius);
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: var(--shadow);
+}
+
+.cta-button:hover {
+    background-color: #E9ECEF; /* A lighter white/off-white */
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/*
+======================================================
+3. GENERAL SECTION STYLING
+======================================================
+*/
+
+section {
+    padding: 60px 20px;
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+/* Alternate background color for readability */
+.about {
+    background-color: var(--white);
+}
+
+.features {
+    background-color: var(--background-color);
+}
+
+.about p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.1em;
+}
+
+/*
+======================================================
+4. FEATURES SECTION
+======================================================
+*/
+
+.features ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.features li {
+    background-color: var(--white);
+    padding: 20px 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    font-size: 1.1em;
+    font-weight: 600;
+    flex: 1 1 200px; /* Allows list items to grow/shrink but not smaller than 200px */
+    max-width: 250px;
+    text-align: left;
+}
+
+/*
+======================================================
+5. SIGNUP SECTION (FORM)
+======================================================
+*/
+
+.signup {
+    background-color: var(--white);
+    padding-bottom: 80px;
+}
+
+#signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+    margin: 30px auto 20px;
+    padding: 20px;
+    border: 1px solid #DEE2E6;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+#signup-form input {
+    padding: 12px;
+    border: 1px solid #CED4DA;
+    border-radius: 4px;
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#signup-form input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+#signup-form button[type="submit"] {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#signup-form button[type="submit"]:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+}
+
+/*
+======================================================
+6. FOOTER
+======================================================
+*/
+
+footer {
+    background-color: var(--text-color);
+    color: var(--secondary-color);
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+/*
+======================================================
+7. MEDIA QUERIES (FOR RESPONSIVENESS)
+======================================================
+*/
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 60px 15px;
+    }
+
+    .hero h1 {
+        font-size: 2.2em;
+    }
+
+    section {
+        padding: 40px 15px;
+    }
+
+    .features li {
+        flex: 1 1 100%; /* Stack features on smaller screens */
+        max-width: 100%;
+        text-align: center;
+    }
+
+    #signup-form {
+        max-width: 100%;
+    }
+ login-btn {
+      background-color: #4CAF50; /* Green */
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }

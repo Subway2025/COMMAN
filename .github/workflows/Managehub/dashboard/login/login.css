@@ -1,0 +1,83 @@
+/* ============================================================
+   LOGIN PAGE STYLES
+   ============================================================ */
+
+.login {
+  /* Center the section on the page */
+  max-width: 400px;
+  margin: 10vh auto; /* 10% viewport height margin from top */
+  padding: 40px;
+  background: #ffffff; /* White background */
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1); /* Soft, noticeable shadow */
+  text-align: center;
+}
+
+.login h2 {
+  color: #1e293b; /* Dark text for primary heading */
+  margin-bottom: 8px;
+  font-size: 1.8rem;
+}
+
+.login p {
+  margin-bottom: 25px;
+  color: #555;
+}
+
+.login form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login input {
+  padding: 14px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.login input:focus {
+  border-color: #4a5568; /* Focus color matching primary gray */
+  outline: none;
+}
+
+/* Login Button (Using the primary app color) */
+.login button[type="submit"] {
+  background: #4a5568;
+  color: #fff;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 10px;
+}
+
+.login button[type="submit"]:hover {
+  background: #2d3748;
+}
+
+/* Link for Sign Up */
+.login p a {
+  color: #4a5568; 
+  font-weight: 600;
+}
+.login p a:hover {
+  text-decoration: underline;
+}
+
+/* --- Footer on Login Page --- */
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #777;
+  font-size: 0.85rem;
+  /* Ensure footer is visible at the bottom if the viewport is tall */
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Work Order Management</title>
+    
+    <link rel="stylesheet" href="../styles/nav.css" /> 
+    <link rel="stylesheet" href="jobmanager.css" /> 
+</head>
+<body>
+
+<div class="container">
+    <aside class="sidebar">
+        <nav class="nav">
+            <a href="../dashboard/dashboard.html">Dashboard</a>
+            <a href="../employee/employee.html">Employees</a>
+           <a href="../WO/wo.html">Work Order</a>
+            <a href="../tasktie/tasktie.html">Assignment Board</a>
+            <a href="../calendar/calendar.html">Calendar</a>
+            <a href="../settings/setting.html">Settings</a>
+        </nav>
+    </aside>
+    
+    <main class="main">
+        <h1>Work Order Manager</h1>
+
+    
+    <div class="top-bar">
+    <input type="text" id="searchInput" placeholder="Search orders..." />
+    
+    <button id="importBtn" class="dash-btn">Import CSV</button>
+    <button id="exportBtn" class="dash-btn">Export CSV</button>
+
+    <button id="toggleViewBtn" class="dash-btn">Switch View to Table</button>
+    <button id="openModalBtn" class="dash-btn">+ Create Work Order</button>
+</div>
+    
+    
+    
+
+        <div id="job-list">
+            </div>
+
+    </main>
+</div> 
+
+
+<div id="addJobModal" class="modal">
+    <div class="modal-content card">
+
+        <span class="close" title="Close">&times;</span>
+        <h3>Create New Work Order</h3>
+
+        <form id="addJobForm">
+
+            <label for="title">Work Order Title</label>
+            <input id="title" name="title" type="text" required />
+
+            <label for="description">Description of Work</label>
+            <textarea id="description" name="description" rows="3"></textarea>
+
+            <div class="form-row">
+                <div>
+                    <label for="priority">Priority</label>
+                    <select id="priority" name="priority">
+                        <option value="High">High</option>
+                        <option value="Medium" selected>Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="assignedTo">Assigned Manager</label>
+                    <select id="assignedTo" name="assignedTo"></select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div>
+                    <label for="startDate">Start Date</label>
+                    <input id="startDate" name="startDate" type="date" required />
+                </div>
+                <div>
+                    <label for="dueDate">Due Date</label>
+                    <input id="dueDate" name="dueDate" type="date" />
+                </div>
+            </div>
+
+            <button type="submit" class="dash-btn">Save Work Order</button>
+        </form>
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../dashboard/js/supabase-init.js"></script>
+<script src="jobmanager.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,253 @@
+/*
+======================================================
+1. GLOBAL VARIABLES & BASE LAYOUT
+======================================================
+*/
+:root {
+    --primary-color: #61afef; 
+    --primary-dark: #282c34; 
+    --accent-color: #98c379; 
+    --background-color: #f8f9fa; 
+    --card-bg: #ffffff;
+    --text-color: #212529;
+    --border-radius: 8px;
+    --shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--background-color);
+    color: var(--text-color);
+}
+
+.app {
+    display: flex; /* Ensures sidebar and main content sit side-by-side */
+    min-height: 100vh;
+}
+
+.main {
+    flex: 1;
+    padding: 30px;
+    margin-left: 220px; /* Space for the fixed sidebar width */
+}
+
+h1 {
+    margin-top: 0;
+    color: var(--primary-dark);
+}
+
+/* ============================================================
+   CALENDAR HEADER & CONTROLS
+============================================================ */
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 10px;
+}
+
+.calendar-header strong {
+    font-size: 1.5em;
+    color: var(--primary-color);
+}
+
+.calendar-header .controls {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.calendar-header button {
+    background: var(--primary-color);
+    color: var(--card-bg);
+    border: none;
+    padding: 8px 12px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(97, 175, 239, 0.2);
+    transition: background-color 0.2s;
+}
+
+.calendar-header button:hover {
+    background: #4682b4;
+}
+
+#exportBtn {
+    background: var(--accent-color);
+    color: var(--primary-dark);
+}
+#exportBtn:hover {
+    background: #72a457;
+}
+
+/* ============================================================
+   CALENDAR GRID LAYOUT (The part that makes it appear)
+============================================================ */
+#calendarGrid {
+    display: grid;
+    /* 7 columns for 7 days of the week, equally sized */
+    grid-template-columns: repeat(7, 1fr);
+    grid-auto-rows: minmax(110px, auto); /* Minimum height for days */
+    border: 1px solid #e6eef8;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    background-color: var(--card-bg);
+}
+
+/* Day of the week labels */
+.day-label {
+    background-color: var(--primary-dark);
+    color: var(--card-bg);
+    padding: 10px 5px;
+    font-weight: 600;
+    text-align: center;
+    border-right: 1px solid #3c414c;
+    font-size: 0.9em;
+}
+
+/* Individual Day Cell */
+.calendar-cell {
+    min-height: 110px;
+    padding: 12px;
+    color: var(--text-color);
+    border: 1px solid #e6eef8;
+    border-top: none; 
+    border-left: none;
+    cursor: pointer;
+    transition: background-color 0.1s;
+    text-align: left;
+    overflow: hidden;
+}
+
+.calendar-cell:hover {
+    background-color: #f0f0f0;
+}
+
+.calendar-cell.empty {
+    background: #f8f8f8;
+    pointer-events: none;
+}
+
+.calendar-cell.today {
+    border: 2px solid var(--accent-color);
+}
+
+.date-number {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 8px;
+}
+
+/* Entry Styling */
+.entry {
+    /* Uses CSS variable --entry-bg set dynamically by JS */
+    background: var(--entry-bg, var(--primary-color)); 
+    padding: 3px 6px;
+    margin-top: 3px;
+    border-radius: 4px;
+    font-size: 11px;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    max-width: 100%;
+}
+
+/* ============================================================
+   MODALS
+============================================================ */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 200; 
+    inset: 0;
+    background: rgba(0,0,0,0.45); 
+    justify-content: center; /* Center the modal content horizontally */
+    align-items: center;   /* Center the modal content vertically */
+}
+
+.modal-content {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+.modal-content input,
+.modal-content select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 6px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    border: 1px solid #e6eef8;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+/* General button styling for modals */
+.modal-content button {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+#saveEntry, #addFromEventsBtn {
+  background: var(--primary-color);
+  color: white;
+}
+#saveEntry:hover, #addFromEventsBtn:hover {
+  background: #4682b4;
+}
+
+.cancel-btn, #closeEventsBtn {
+  background: #adb5bd;
+  color: white;
+}
+.cancel-btn:hover, #closeEventsBtn:hover {
+  background: #7f8a93;
+}
+
+
+/* ============================================================
+   MEDIA QUERIES
+============================================================ */
+
+@media (max-width: 900px) {
+    /* Hide sidebar on mobile/tablet */
+    .sidebar { display: none; }
+    
+    .main { 
+        padding: 18px; 
+        margin-left: 0; /* Take full width */
+    }
+    
+    .calendar-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .calendar-header .controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    #calendarGrid {
+        grid-auto-rows: 90px; /* Reduce height on smaller screens */
+    }
+}

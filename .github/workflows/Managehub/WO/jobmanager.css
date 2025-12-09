@@ -1,0 +1,355 @@
+/*
+======================================================
+1. GLOBAL VARIABLES & BASE LAYOUT
+======================================================
+*/
+
+:root {
+    /* Using the color scheme complementary to dark sidebar (#282c34) */
+    --primary-color: #61afef; /* Light blue/cyan for accents */
+    --primary-dark: #282c34; /* Dark sidebar color */
+    --accent-color: #98c379; /* Soft green for success */
+    --danger-color: #e06c75; /* Soft red for overdue/high priority */
+    --background-color: #f8f9fa; 
+    --card-bg: #ffffff;
+    --text-color: #212529;
+    --text-subtle: #6c757d;
+    --border-radius: 8px;
+    --shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.main {
+    flex-grow: 1;
+    padding: 30px;
+    margin-left: 220px; /* Adjust if your nav.css sidebar width is different */
+}
+
+h1 {
+    color: var(--primary-dark);
+    margin-bottom: 25px;
+}
+
+/* =======================================================
+2. TOP BAR (Search & Buttons)
+========================================================= */
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+#searchInput {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+}
+
+.dash-btn {
+    padding: 10px 18px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: var(--shadow);
+    white-space: nowrap;
+}
+
+#toggleViewBtn {
+    background-color: #adb5bd;
+    color: var(--card-bg);
+}
+
+#openModalBtn {
+    background-color: var(--primary-color);
+    color: var(--card-bg);
+}
+
+.dash-btn:hover {
+    transform: translateY(-1px);
+}
+#toggleViewBtn:hover { background-color: #6c757d; }
+#openModalBtn:hover { background-color: #4682b4; }
+
+
+/* =======================================================
+3. GRID VIEW (job-grid & job-card)
+========================================================= */
+
+.job-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.job-card {
+    background-color: var(--card-bg);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 5px solid #ccc; /* Default neutral border */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.job-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+}
+
+.job-card h3 {
+    font-size: 1.4em;
+    color: var(--primary-dark);
+    margin-bottom: 5px;
+}
+
+.job-card p {
+    margin-bottom: 5px;
+    font-size: 0.95em;
+    color: var(--text-subtle);
+}
+
+.job-card .status {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+/* Status Specific Coloring (Card Borders) */
+.job-card.status-open { border-left-color: var(--primary-color); }
+.job-card.status-in-progress { border-left-color: var(--accent-color); }
+.job-card.status-on-hold { border-left-color: #ffc107; /* Warning yellow */ }
+.job-card.status-complete { border-left-color: #6f42c1; /* Purple for complete */ }
+
+.job-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.job-actions button {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    font-size: 0.9em;
+}
+.job-actions button:hover {
+    background-color: #f0f0f0;
+}
+
+/* =======================================================
+4. TABLE VIEW (job-table)
+========================================================= */
+
+.job-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.job-table th, .job-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.job-table th {
+    background-color: var(--primary-dark);
+    color: var(--card-bg);
+    font-weight: 600;
+    font-size: 0.95em;
+}
+
+.job-table tr:nth-child(even) {
+    background-color: #f4f6f8;
+}
+
+.job-table tr:hover {
+    background-color: #e9ecef;
+}
+
+.job-table .job-actions {
+    margin-top: 0;
+    gap: 5px;
+}
+/* Ensure table buttons are smaller */
+.job-table .job-actions button {
+    padding: 5px 10px;
+}
+
+/* =======================================================
+5. MODAL STYLES (Add Job Form)
+========================================================= */
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); 
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+.modal-content .close {
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.modal-content label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.modal-content input,
+.modal-content select,
+.modal-content textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.modal-content .form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.modal-content .form-row > div {
+    flex: 1;
+}
+
+.modal-content .form-row input,
+.modal-content .form-row select {
+    width: 100%;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.modal-actions .dash-btn {
+    padding: 12px 20px;
+}
+
+/* Cancel Button */
+.modal-actions .dash-btn.cancel-btn {
+    background-color: #adb5bd;
+    color: var(--card-bg);
+}
+.modal-actions .dash-btn.cancel-btn:hover {
+    background-color: #6c757d;
+}
+
+/* =======================================================
+6. MEDIA QUERIES
+========================================================= */
+
+@media (max-width: 900px) {
+    .main {
+        padding: 15px;
+        margin-left: 0; /* Full width */
+    }
+    
+    .top-bar {
+        flex-wrap: wrap;
+    }
+
+    .top-bar #searchInput {
+        order: 1; /* Search input first */
+        width: 100%;
+        flex-basis: 100%;
+    }
+    .top-bar #toggleViewBtn {
+        order: 2;
+    }
+    .top-bar #openModalBtn {
+        order: 3;
+    }
+
+    .job-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-content .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}/* ... existing styles for dash-btn ... */
+
+/* Style for Import Button (Neutral/Accent) */
+#importBtn {
+    background-color: var(--card-bg); /* White background */
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+#importBtn:hover {
+    background-color: var(--primary-color);
+    color: var(--card-bg);
+}
+
+/* Style for Export Button (Success/Accent) */
+#exportBtn {
+    background-color: var(--accent-color); /* Green */
+    color: var(--primary-dark);
+    border: none;
+}
+
+#exportBtn:hover {
+    background-color: #72a457; /* Darker Green */
+    color: var(--card-bg);
+    transform: translateY(-1px);
+}

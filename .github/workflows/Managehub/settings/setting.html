@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Settings | Angled Analytics</title>
+  <link rel="stylesheet" href="setting.css" />
+  <link rel="stylesheet" href="../nav.css" />
+</head>
+
+<body>
+  <div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <nav class="nav">
+        <a href="../dashboard/dashboard.html">Dashboard</a>
+        <a href="../employees/employee.html">Employees</a>
+        <a href="../inventory/inventory.html">Inventory</a>
+        <a href="../tasktie/tasktie.html">Assignment Board</a>
+        <a href="../calendar/calendar.html">Calendar</a>
+        <a class="active" href="setting.html">Settings</a>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+      <h1>Settings</h1>
+
+      <!-- ACCOUNT SETTINGS -->
+      <section class="settings-section">
+        <h2>Account</h2>
+
+        <label>Display Name</label>
+        <input type="text" id="displayName" placeholder="Your name">
+
+        <label>Email</label>
+        <input type="email" id="email" placeholder="you@example.com">
+
+        <button class="save-btn">Save Account Settings</button>
+      </section>
+
+      <!-- APPEARANCE SETTINGS -->
+      <section class="settings-section">
+        <h2>Appearance</h2>
+
+        <label>Theme</label>
+        <select id="themeSelect">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+
+        <label>Accent Color</label>
+        <input type="color" id="accentColor" value="#3b82f6">
+
+        <button class="save-btn">Save Appearance</button>
+      </section>
+
+      <!-- NOTIFICATIONS -->
+      <section class="settings-section">
+        <h2>Notifications</h2>
+
+        <div class="toggle-row">
+          <span>Email Alerts</span>
+          <input type="checkbox" id="emailAlerts">
+        </div>
+
+        <div class="toggle-row">
+          <span>Low Inventory Warnings</span>
+          <input type="checkbox" id="inventoryAlerts">
+        </div>
+
+        <div class="toggle-row">
+          <span>Shift Reminders</span>
+          <input type="checkbox" id="shiftAlerts">
+        </div>
+
+        <button class="save-btn">Save Notification Settings</button>
+      </section>
+
+      <!-- DATA SETTINGS -->
+      <section class="settings-section">
+        <h2>Data</h2>
+
+        <button class="export-btn">Export All Data</button>
+
+        <label class="import-btn">
+          Import Data
+          <input type="file" id="importData" accept=".json">
+        </label>
+      </section>
+
+      <!-- SYSTEM -->
+      <section class="settings-section danger-zone">
+        <h2>System</h2>
+
+        <button class="danger-btn" id="resetSystem">
+          Reset Application
+        </button>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="setting.js"></script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+/* ============================================================
+   EMPLOYEE-SPECIFIC STYLES
+   (Relies on global styles for .container, .sidebar, .main, etc.)
+   ============================================================ */
+
+/* --- Top Bar & Search Input --- */
+.top-bar {
+  background: #ffffff;
+  padding: 15px 20px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px; 
+  gap: 10px;
+}
+
+.top-bar input {
+  flex-grow: 1;
+  max-width: 400px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px; 
+}
+
+/* Primary Action Button (Gray) */
+.dash-btn {
+  background: #4a5568; 
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.dash-btn:hover {
+  background: #2d3748;
+}
+
+/* --- Employee Grid and Cards --- */
+.employee-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.employee-card {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 16px;
+  /* Default border color */
+  border-left: 4px solid #4a5568; 
+  box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+}
+
+.employee-card h3 {
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a202c; 
+}
+
+.employee-card p {
+  margin: 4px 0;
+  color: #555;
+  font-size: 14px;
+}
+
+/* Delete Button (Red/Danger) */
+.btn-delete, .btn-orange {
+  background-color: #dc3545; 
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-delete:hover, .btn-orange:hover {
+  background-color: #c82333;
+}
+
+/* --- Employee Table View --- */
+.employee-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.employee-table th, .employee-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.employee-table th {
+  background: #f0f0f0;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+/* --- Modal Styles --- */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.7); 
+  overflow: auto;
+}
+
+.modal-content {
+  background: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 450px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.close {
+  float: right;
+  font-size: 28px;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #dc3545;
+}
+
+/* Form Inputs */
+#addEmployeeForm label {
+  display: block;
+  margin-top: 10px;
+  font-weight: 500;
+  color: #444;
+  font-size: 14px;
+}
+
+#addEmployeeForm input[type="text"], 
+#addEmployeeForm select, 
+#addEmployeeForm input[type="color"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 4px;
+  border-radius: 6px; 
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 14px;
+}
+
+#addEmployeeForm button[type="submit"] {
+  margin-top: 25px;
+  width: 100%;
+}
+
+
+/* --- Responsiveness for Employee View --- */
+@media (max-width: 768px) {
+  .top-bar {
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+  }
+  .top-bar input {
+    width: 100%;
+    margin-bottom: 10px;
+    max-width: none;
+  }
+  .dash-btn {
+      flex-basis: calc(50% - 5px);
+      width: calc(50% - 5px);
+      margin: 0;
+      text-align: center;
+      padding: 12px 10px;
+  }
+}
+/* --- CRITICAL LAYOUT FIX: ELIMINATE WHITE GAP --- */
+html, body {
+  /* Ensure the page takes up full viewport height */
+  height: 100%; 
+  /* The Fix: Remove default browser margins and padding */
+  margin: 0; 
+  padding: 0;
+  /* Use the border-box model globally for predictable sizing */
+  box-sizing: border-box; 
+}
+
+/* Ensure the main container wrapper takes up the height */
+.container {
+  display: flex;
+  min-height: 100vh;
+}/* --- Sidebar Links --- */
+.nav a {
+  /* ... existing styles ... */
+  text-decoration: none; /* Ensure no underline */
+}
+
+/* --- Card Links (If they have underlines you don't want) --- */
+.card-link {
+  color: #4a5568; 
+  text-decoration: none; /* Remove underline from "Go to..." links */
+  font-weight: 600;
+}/* Ensure all elements inherit the consistent font */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  /* Defining the font universally */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important; 
+}

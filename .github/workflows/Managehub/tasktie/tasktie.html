@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assignment Board - TaskTie</title>
+  
+  <link rel="stylesheet" href="../styles/nav.css" /> 
+  <link rel="stylesheet" href="tasktie.css" /> 
+</head>
+<body>
+
+<div class="container">
+  <aside class="sidebar">
+    <nav class="nav">
+      <a href="../dashboard/dashboard.html">Dashboard</a>
+      <a href="../employee/employee.html">Employees</a>
+      <a href="../WO/wo.html">Work Order</a>
+      <a class="active" href="../tasktie/tasktie.html">Assignment Board</a>
+      <a href="../calendar/calendar.html">Calendar</a>
+      <a href="../settings/setting.html">Settings</a>
+    </nav>
+  </aside>
+  
+  <main class="main">
+    <h1>Task Assignment Board</h1>
+
+    <div class="top-bar">
+      <input type="text" id="searchInput" placeholder="Search tasks..." />
+      <button id="openModalBtn" class="dash-btn">+ New Task</button>
+    </div>
+
+    <div id="kanbanBoard">
+      </div>
+
+  </main>
+</div> 
+
+
+<div id="addTaskModal" class="modal">
+  <div class="modal-content card">
+
+    <span class="close" title="Close">&times;</span>
+    <h3>Create New Task</h3>
+
+    <form id="addTaskForm">
+
+      <label for="taskTitle">Title</label>
+      <input id="taskTitle" name="taskTitle" type="text" required autocomplete="off" />
+
+      <label for="taskDescription">Description</label>
+      <textarea id="taskDescription" name="taskDescription" rows="2"></textarea>
+      
+      <div class="form-row">
+          <div>
+              <label for="taskPriority">Priority</label>
+              <select id="taskPriority" name="taskPriority">
+                  <option value="High">High</option>
+                  <option value="Medium" selected>Medium</option>
+                  <option value="Low">Low</option>
+              </select>
+          </div>
+          <div>
+              <label for="taskDueDate">Due Date</label>
+              <input id="taskDueDate" name="taskDueDate" type="date" />
+          </div>
+      </div>
+
+      <label for="assignedTo">Assign To</label>
+      <select id="assignedTo" name="assignedTo">
+          </select>
+
+      <label for="workOrderId">Link to Work Order (Optional)</label>
+      <select id="workOrderId" name="workOrderId">
+          <option value="">-- None --</option>
+          </select>
+
+      <button type="submit" class="dash-btn">Save Task</button>
+    </form>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../dashboard/js/supabase-init.js"></script>
+<script src="tasktie.js"></script>
+
+</body>
+</html>

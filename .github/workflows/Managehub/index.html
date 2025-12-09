@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Competent Management — Sign Up</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Hero Section -->
+  <header class="hero">
+    <h1>Competent Management</h1>
+    <p>Smart solutions to help businesses grow, organize, and succeed.</p>
+    <a href="#signup" class="cta-button">Get Started</a>
+  </header>
+
+  <!-- About Section -->
+  <section class="about">
+    <h2>What We Do</h2>
+    <p>
+      Competent Management provides tools for business owners to manage projects,
+      employees, and operations with confidence.
+    </p>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <h2>Why Choose Us?</h2>
+    <ul>
+      <li>📊 Easy project tracking</li>
+      <li>👥 Employee management tools</li>
+      <li>📈 Business insights</li>
+      <li>🔒 Secure login and data protection</li>
+    </ul>
+  </section>
+
+  <!-- Signup Section -->
+  <section id="signup" class="signup">
+    <h2>Sign Up Today</h2>
+
+    <form id="signup-form">
+      <input type="text" id="name" placeholder="Full Name" required />
+
+      <input type="text" id="businessName" placeholder="Business Name" required />
+
+      <input type="email" id="email" placeholder="Email Address" required />
+
+      <input type="password" id="password" placeholder="Password" required />
+
+      <button type="submit">Create Account</button>
+    </form>
+
+    <p>
+      Already have an account?
+      <a href="dashboard/login/login.html">Log in here</a>.
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Competent Management. All rights reserved.</p>
+  </footer>
+
+  <!-- Supabase + JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="dashboard/js/supabase-init.js"></script>
+  <script src="dashboard/js/signup.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Angled Analytics Dashboard</title>
+  <link rel="stylesheet" href="dash.css">
+  <link rel="stylesheet" href="../styles/nav.css">
+</head>
+
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+  <nav class="nav">
+    <a href="../dashboard/dashboard.html">Dashboard</a>
+    <a href="../employee/employee.html">Employees</a>
+    <a href="../WO/wo.html">Work Order</a>
+    <a href="../tasktie/tasktie.html">Assignment Board</a>
+    <a href="../calendar/calendar.html">Calendar</a>
+    <a href="../settings/setting.html">Settings</a>
+  </nav>
+</aside>
+
+    <!-- Main Content -->
+    <main class="main">
+
+      <div class="top-bar">
+        <div class="dashboard-buttons">
+          <button id="logout">Logout</button>
+          <!-- ✅ Give this button an ID so JS can find it -->
+          <a href="timeclock.html" id="timeClock" target="_blank" class="dashboard-buttons-item">Time Clock</a>
+        </div>
+      </div>
+
+      <!-- Welcome Banner -->
+      <div class="welcome-banner">
+        <h2 id="welcome">Welcome</h2>
+      </div>
+
+      <!-- Dashboard Grid -->
+      <div class="dashboard-container">
+        <div class="card">
+          <h3>Employees</h3>
+          <p>Manage your team and view employee details.</p>
+          <a href="../employee/employee.html" class="card-link">Go to Employees</a>
+        </div>
+
+        <div class="card">
+          <h3>Inventory</h3>
+          <p>Track and update your inventory records.</p>
+          <a href="../inventory/inventory.html" class="card-link">Go to Inventory</a>
+        </div>
+
+        <div class="card">
+          <h3>Assignment Board</h3>
+          <p>View and assign tasks to employees.</p>
+          <a href="../tasktie/tasktie.html" class="card-link">Go to Board</a>
+        </div>
+
+        <div class="card">
+          <h3>Calendar</h3>
+          <p>Check upcoming events and deadlines.</p>
+          <a href="../calendar/calendar.html" class="card-link">Go to Calendar</a>
+        </div>
+
+        <div class="card">
+          <h3>Reports</h3>
+          <p>View analytics and performance reports.</p>
+          <a href="../report/report.html" class="card-link">Go to Reports</a>
+        </div>
+
+        <div class="card">
+          <h3>Settings</h3>
+          <p>Update your preferences and system settings.</p>
+          <a href="../settings/setting.html" class="card-link">Go to Settings</a>
+        </div>
+      </div>
+  </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-init.js"></script>
+  <script src="dashboard/js/dashboard.js"></script>
+</body>
+</html>

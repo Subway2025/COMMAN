@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Employees Management</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link rel="stylesheet" href="../styles/nav.css" /> 
+  <link rel="stylesheet" href="employee.css" /> 
+</head>
+<body>
+
+<div class="container">
+  <aside class="sidebar">
+    <nav class="nav">
+      <a href="../dashboard/dashboard.html">Dashboard</a>
+      <a class="active" href="../employee/employee.html">Employees</a>
+    <a href="../WO/wo.html">Work Order</a>
+      <a href="../tasktie/tasktie.html">Assignment Board</a>
+      <a href="../calendar/calendar.html">Calendar</a>
+      <a href="../settings/setting.html">Settings</a>
+    </nav>
+  </aside>
+  
+  <main class="main">
+
+    <div class="top-bar">
+      <input type="text" id="searchInput" placeholder="Search employees..." />
+      <button id="toggleViewBtn" class="dash-btn">Switch View to Table</button>
+      <button id="openModalBtn" class="dash-btn">+ Add Employee</button>
+    </div>
+
+    <div id="employee-list"></div>
+
+  </main>
+</div> 
+
+
+<div id="addEmployeeModal" class="modal">
+  <div class="modal-content card">
+
+    <span class="close" title="Close">&times;</span>
+    <h3>Add Employee</h3>
+
+    <form id="addEmployeeForm">
+
+      <label for="name">Name</label>
+      <input id="name" name="name" type="text" required autocomplete="name" />
+
+      <label for="role">Role</label>
+      <input id="role" name="role" type="text" autocomplete="organization-title" /> 
+
+      <label for="pin">PIN</label>
+      <input id="pin" name="pin" type="text" placeholder="Time Clock PIN (4-6 digits)" autocomplete="off" /> 
+
+      <label for="shift">Shift</label>
+      <select id="employeeShift" name="shift" autocomplete="off">
+        <option value="">Unspecified</option>
+        <option value="Morning">Morning</option>
+        <option value="Afternoon">Afternoon</option>
+        <option value="Night">Night</option>
+      </select>
+
+      <label for="employeeColor">Color</label>
+      <input type="color" id="employeeColor" name="color" value="#059669" autocomplete="off" /> 
+
+      <button type="submit" class="dash-btn">Save Employee</button>
+    </form>
+
+  </div>
+</div>
+
+
+<script src="../dashboard/js/supabase-init.js"></script>
+<script src="employee.js"></script>
+
+</body>
+</html>

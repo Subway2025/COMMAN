@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Time Clock</title>
+  <link rel="stylesheet" href="time.css">
+</head>
+<body>
+
+<div class="timeclock-container">
+    <div class="timeclock-card">
+        <h2>Employee Time Clock</h2>
+        <p id="current-time">Loading...</p>
+
+        <form id="punchForm">
+            <label for="pinInput">Enter PIN to Punch:</label>
+            <input type="password" id="pinInput" placeholder="4-6 Digit PIN" required maxlength="6" readonly /> <div id="numpad-container">
+                <button type="button" class="num-btn" data-value="1">1</button>
+                <button type="button" class="num-btn" data-value="2">2</button>
+                <button type="button" class="num-btn" data-value="3">3</button>
+
+                <button type="button" class="num-btn" data-value="4">4</button>
+                <button type="button" class="num-btn" data-value="5">5</button>
+                <button type="button" class="num-btn" data-value="6">6</button>
+
+                <button type="button" class="num-btn" data-value="7">7</button>
+                <button type="button" class="num-btn" data-value="8">8</button>
+                <button type="button" class="num-btn" data-value="9">9</button>
+
+                <button type="button" class="num-btn clear-btn" data-value="clear">C</button>
+                <button type="button" class="num-btn" data-value="0">0</button>
+                <button type="button" class="num-btn delete-btn" data-value="delete">&larr;</button>
+            </div>
+            <div class="punch-actions">
+                <button type="submit" data-type="IN" class="action-btn btn-in">Clock In</button>
+                <button type="submit" data-type="BREAK_START" class="action-btn btn-break">Start Break</button>
+                <button type="submit" data-type="BREAK_END" class="action-btn btn-break-end">End Break</button>
+                <button type="submit" data-type="OUT" class="action-btn btn-out">Clock Out</button>
+            </div>
+            
+            <p id="message" class="punch-message"></p>
+        </form>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../dashboard/js/supabase-init.js"></script>
+<script src="js/timeclock.js"></script>
+
+</body>
+</html>

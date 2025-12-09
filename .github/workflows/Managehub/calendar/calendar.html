@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Scheduler — Calendar</title>
+  <link rel="stylesheet" href="calendar.css">
+  <link rel="stylesheet" href="../styles/nav.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <nav class="nav">
+        <a href="../dashboard/dashboard.html">Dashboard</a>
+        <a href="../employee/employee.html">Employees</a>
+        <a href="../WO/wo.html">Work Order</a>
+        <a href="../tasktie/tasktie.html">Assignment Board</a>
+        <a href="../calendar/calendar.html">Calendar</a>
+        <a href="../settings/setting.html">Settings</a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <h1>Team Scheduler</h1>
+
+      <div class="calendar-header">
+        <div>
+          <strong id="monthLabel">Month/Year</strong>
+        </div>
+
+        <div class="controls">
+          <button id="prevMonth">&larr; Prev</button>
+          <button id="nextMonth">Next &rarr;</button>
+          <button id="exportBtn">Export CSV</button>
+        </div>
+      </div>
+
+      <div id="calendarLegend" class="calendar-legend">
+        </div>
+
+      <div id="calendarGrid" aria-label="Calendar grid"></div>
+
+      <div id="dayEventsModal" class="modal" role="dialog" aria-modal="true">
+        <div class="modal-content">
+          <h3>Events on <span id="eventsModalDate"></span></h3>
+          <div id="eventsList" style="max-height:260px; overflow:auto; margin-top:8px;">
+            </div>
+          <div class="modal-actions" style="margin-top:12px;">
+            <button class="cancel-btn" id="closeEventsBtn">Close</button>
+            <button id="addFromEventsBtn">Add New Entry</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="modal" class="modal" role="dialog" aria-modal="true">
+        <div class="modal-content">
+          <h3>Entry for <span id="modalDate"></span></h3>
+
+          <label for="entryType">Type</label>
+          <select id="entryType" name="entryType">
+            <option value="event">Event</option>
+            <option value="task">Task</option>
+            <option value="shift">Shift</option>
+          </select>
+
+          <label id="shiftLabel" for="shiftEmployee" style="display:none;">Employee</label>
+          <select id="shiftEmployee" style="display:none;"></select>
+          
+          <label for="entryTitle">Title</label>
+          <input id="entryTitle" placeholder="Title (optional)"/>
+
+          <div class="modal-actions">
+            <button class="cancel-btn" id="closeModal">Cancel</button>
+            <button id="saveEntry">Save</button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../dashboard/js/supabase-init.js"></script>
+  <script src="calendar.js" defer></script>
+</body>
+</html>
